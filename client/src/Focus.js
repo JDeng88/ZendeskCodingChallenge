@@ -19,7 +19,8 @@ function Focus(props){
         return(
             <div className="Focus">
                 <h1> {ticket.subject} </h1>
-                <h3> {ticket.description} </h3>
+                <h3> {ticket.submitter} </h3>
+                <p> {ticket.description} </p>
             </div>  
         )
     }
