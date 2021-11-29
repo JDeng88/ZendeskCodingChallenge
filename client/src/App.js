@@ -22,7 +22,6 @@ function App() {
   const [focusTicket, setFocusTicket] = useState({});
   const [currPage, setCurrPage] = useState(0);
 
-
   const getTickets = () => {
     setLoading(true);
     (async() => {
