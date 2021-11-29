@@ -7,12 +7,12 @@ const axios = require('axios');
 const API_URL = "https://zccjdeng88.zendesk.com/api/v2";
 const API_USER = require('./user');
 
-// if (process.env.NODE_ENV === 'production'){
-//     app.use(express.static('client/build'));
-//     app.get('*', (req, res)  => {
-//         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//     })
-// }
+if (process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+    app.get('*', (req, res)  => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+}
 
 app.use(cors());
 
