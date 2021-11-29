@@ -103,9 +103,7 @@ function App() {
             <Box height="10vh" width="30vh" display="flex" flexDirection="row">
               <button onClick={prevPage}>  Prev </button>
               <button onClick={nextPage}> Next </button>
-            </Box>
-            <Box height="10vh" width="70vh" display="flex" flexDirection="row" justifyContent="end">
-              <h1> placeholder for sort menu </h1>
+              <h1> Page {currPage + 1} of {pages.length} </h1>
             </Box>
           </Stack>
           <Stack direction="row">

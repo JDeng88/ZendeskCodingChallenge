@@ -19,6 +19,7 @@ app.use(cors());
 app.get('/', function(req, res){
     (async () => {
         try {
+            console.log("tried");
             var response = await axios({
                 url: "/tickets.json",
                 baseURL: API_URL,
@@ -37,7 +38,4 @@ app.get('/', function(req, res){
 
 
 
-app.listen(8888, () => {
-    console.log("Listening on port 8888");
-})
-
+export default app;
