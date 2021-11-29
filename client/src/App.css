@@ -20,20 +20,21 @@ html, body{
   background-color:green;
 }
 
-.Landing{
+.Landing, .Display{
   height: 100%;
   width: 100%;
   position: absolute;
   background-color: #184c4c;
-  color: white;
-  text-align: center;
-  padding-top: 15%
 }
 
-.Focus{
-  padding-left: 2%;
-  padding-right: 2%
+.Landing{
+  padding-top:15%;
+  color: white;
+  text-align: center;
 }
+
+
+
 
 
 

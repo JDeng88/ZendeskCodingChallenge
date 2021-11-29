@@ -1,18 +1,18 @@
 import axios from "axios";
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import './App.css';
 import Focus from './Focus';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import Ticket from './Ticket';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+
 
 
 
 function App() {
 
-  const nodeServer = process.env.SERVER_URL || "http://localhost:5000";
+  const nodeServer = process.env.SERVER_URL || "http://localhost:8888";
 
   const [pageState, setPageState] = useState("landing");
   const [pages, setPages] = useState([]);
@@ -39,7 +39,7 @@ function App() {
           newPages.push(newPage);
         }
         if (response.data.length > 0){
-          newPages.push(response);
+          newPages.push(response.data);
         }
         setPages((pages) => [...newPages]);
         setError(false);
@@ -54,6 +54,27 @@ function App() {
   const focus = (ticket) => {
     setFocusTicket({...ticket});
     console.log(ticket.subject);
+  }
+
+  const prevPage = () => {
+    if (currPage > 0){
+      var newPage = currPage - 1;
+      setCurrPage(newPage);  
+    } else {
+      console.log("cannot go back");
+    }
+    
+  }
+
+  const nextPage = () => {
+    console.log(pages);
+    if (currPage < pages.length - 1){
+      var newPage = currPage + 1;
+      setCurrPage(newPage);
+    } else {
+      console.log("cannot go forward");
+    }
+    
   }
 
 
@@ -81,26 +102,24 @@ function App() {
           {error ? errorMessage : ''}
           <Stack direction="row">
             <Box height="10vh" width="30vh" display="flex" flexDirection="row">
-              <button>  Prev </button>
-              <button> Next </button>
+              <button onClick={prevPage}>  Prev </button>
+              <button onClick={nextPage}> Next </button>
             </Box>
             <Box height="10vh" width="70vh" display="flex" flexDirection="row" justifyContent="end">
-              <Menu>
-                <MenuItem value={1} primaryText="English"  />
-                <MenuItem value={2} primaryText="Spanish" />
-                <MenuItem value={3} primaryText="French" />
-              </Menu>
+              <h1> placeholder for sort menu </h1>
             </Box>
           </Stack>
           <Stack direction="row">
-            <Box height="90vh" width="30vh" display="flex" flexDirection="column">
+            <Box height="90vh" width="30vw" display="flex" flexDirection="column" align="center">
                 <Box flex={1} overflow="auto">
                     {pages[currPage].map((ticket) => (<Ticket ticket={ticket} focus={focus} />))}
                 </Box>
             </Box>
-            <Box height="70vh" width="70vh" display="flex" flexDirection="column">
-                <Box flex={1} overflow="hidden">
-                    <Focus ticket={focusTicket}/>
+            <Box height="90vh" width="70vw" display="flex" flexDirection="column">
+                <Box flex={1} overflow="hidden" align="center">
+                    <Typography align="center">
+                      <Focus ticket={focusTicket} />
+                    </Typography>
                 </Box>
             </Box>
           </Stack>
