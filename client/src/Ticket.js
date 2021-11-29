@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import Paper from '@mui/material/Paper';
-import {styled} from '@mui/material/styles';
+
 
 
 function Ticket(props){
